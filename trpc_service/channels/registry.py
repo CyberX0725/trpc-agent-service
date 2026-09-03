@@ -7,6 +7,7 @@ from trpc_service.config.models import ChannelType
 from trpc_service.channels.base import BaseChannelAdapter
 from trpc_service.channels.wechat_work import WeChatWorkChannelAdapter
 from trpc_service.channels.telegram import TelegramChannelAdapter
+from trpc_service.channels.wechat_kf import WeChatKFChannelAdapter
 
 
 class ChannelRegistry:
@@ -17,6 +18,7 @@ class ChannelRegistry:
         # Register standard built-in adapters
         self.register_adapter(ChannelType.WECOM, WeChatWorkChannelAdapter())
         self.register_adapter(ChannelType.TELEGRAM, TelegramChannelAdapter())
+        self.register_adapter(ChannelType.WECHAT_KF, WeChatKFChannelAdapter())
 
     def register_adapter(self, channel_type: ChannelType, adapter: BaseChannelAdapter):
         self._adapters[channel_type] = adapter
